@@ -81,13 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Carson">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="你当然可以不用学习数据结构与算法这种麻烦的东西,你完全可以用别人已经封装好的工具拿来用, 但是,如果你只会使用工具,那注定这辈子只是个”码农”,所以我将在今天开始,陆陆续续补充自己的数据结构与算法知识, 可能节奏很慢,但是成功不是一夜暴富,而是每天都在循环渐进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法(一) --初识数据结构">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/数据结构与算法1/index.html">
 <meta property="og:site_name" content="Carson">
+<meta property="og:description" content="你当然可以不用学习数据结构与算法这种麻烦的东西,你完全可以用别人已经封装好的工具拿来用, 但是,如果你只会使用工具,那注定这辈子只是个”码农”,所以我将在今天开始,陆陆续续补充自己的数据结构与算法知识, 可能节奏很慢,但是成功不是一夜暴富,而是每天都在循环渐进">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-23T12:04:26.742Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Carson">
+<meta name="twitter:title" content="数据结构与算法(一) --初识数据结构">
+<meta name="twitter:description" content="你当然可以不用学习数据结构与算法这种麻烦的东西,你完全可以用别人已经封装好的工具拿来用, 但是,如果你只会使用工具,那注定这辈子只是个”码农”,所以我将在今天开始,陆陆续续补充自己的数据结构与算法知识, 可能节奏很慢,但是成功不是一夜暴富,而是每天都在循环渐进">
 
 
 
@@ -117,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/23/数据结构与算法1/">
 
 
 
 
 
-  <title>Carson</title>
+  <title>数据结构与算法(一) --初识数据结构 | Carson</title>
   
 
 
@@ -142,8 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband">
 	</div>
 	
@@ -217,9 +220,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
 
   
@@ -250,9 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/23/数据结构与算法1/" itemprop="url">数据结构与算法(一) --初识数据结构</a></h1>
+          <h1 class="post-title" itemprop="name headline">数据结构与算法(一) --初识数据结构</h1>
         
 
         <div class="post-meta">
@@ -286,6 +287,9 @@
           
 		  
 		  
+		  <span class="post-meta-divider">|</span>
+		  <span id="busuanzi_value_page_pv"></span>次阅读
+			
 
           
 
@@ -304,18 +308,24 @@
       
 
       
-        
-          <p>你当然可以不用学习数据结构与算法这种麻烦的东西,你完全可以用别人已经封装好的工具拿来用,</p>
+        <p>你当然可以不用学习数据结构与算法这种麻烦的东西,你完全可以用别人已经封装好的工具拿来用,</p>
 <p>但是,如果你只会使用工具,那注定这辈子只是个”码农”,所以我将在今天开始,陆陆续续补充自己的数据结构与算法知识,</p>
 <p>可能节奏很慢,但是成功不是一夜暴富,而是每天都在循环渐进</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/23/数据结构与算法1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a id="more"></a>
+<h1 id="一、-概述"><a href="#一、-概述" class="headerlink" title="一、 概述"></a>一、 概述</h1><ol>
+<li><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><h4 id="l-什么是数据结构？"><a href="#l-什么是数据结构？" class="headerlink" title="l  什么是数据结构？"></a>l  什么是数据结构？</h4><p>​              数据结构是指相互之间存在着一种或多种关系的数据元素的集合和该集合中数据元素之间的关系组成。</p>
+<h4 id="l-数据的存储结构"><a href="#l-数据的存储结构" class="headerlink" title="l  数据的存储结构"></a>l  数据的存储结构</h4><h5 id="顺序存储结构-gt"><a href="#顺序存储结构-gt" class="headerlink" title="顺序存储结构&gt;"></a>顺序存储结构&gt;</h5><p>顺序存储结构：是把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的。数组就是顺序存储结构的典型代表。</p>
+<h5 id="链式存储结构-gt"><a href="#链式存储结构-gt" class="headerlink" title="链式存储结构&gt;"></a>链式存储结构&gt;</h5><p>链式存储结构：是把数据元素存放在内存中的任意存储单元里，也就是可以把数据存放在内存的各个位置。这些数据在内存中的地址可以是连续的，也可以是不连续的。</p>
+<p>和顺序存储结构不同的是，链式存储结构的数据元素之间是通过指针来连接的，我们可以通使用指针来找到某个数据元素的位置，然后对这个数据元素进行一些操作。</p>
+<p>顺序存储结构和链式存储结构的区别</p>
+<h4 id="l-数据的逻辑结构"><a href="#l-数据的逻辑结构" class="headerlink" title="l  数据的逻辑结构"></a>l  数据的逻辑结构</h4><p>指反映数据元素之间的逻辑关系的数据结构，其中的逻辑关系是指数据元素之间的前后关系，而与他们在计算机中的存储位置无关。逻辑结构分为以下四类：</p>
+<h5 id="1-集合结构"><a href="#1-集合结构" class="headerlink" title="1.集合结构"></a>1.集合结构</h5><p>集合结构中的数据元素同属于一个集合，他们之间是并列的关系，除此之外没有其他关系。如下图，可以很好的表示集合结构中的元素之间的关系：</p>
+<h5 id="2-线性结构"><a href="#2-线性结构" class="headerlink" title="2.线性结构"></a>2.线性结构</h5><p>线性结构中的元素存在一对一的相互关系。</p>
+<h5 id="3-树形结构"><a href="#3-树形结构" class="headerlink" title="3.树形结构"></a>3.树形结构</h5><p>树形结构中的元素存在一对多的相互关系。</p>
+<h5 id="4-图形结构"><a href="#4-图形结构" class="headerlink" title="4.图形结构"></a>4.图形结构</h5><p>图形结构中的元素存在多对多的相互关系。</p>
+</li>
+</ol>
+
       
     </div>
     
@@ -325,10 +335,45 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我喝杯卡布奇诺吧!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/weixin.jpg" alt="于宪涛 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/zhifubao.jpg" alt="于宪涛 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 	
 	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文已结束<i class="fa fa-paw"></i>希望可以帮到你-------------</div>
+    
+</div>
 	  
 	</div>
 
@@ -336,143 +381,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/Hexo+GitHub-for-Windows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="于宪涛">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Carson">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/20/Hexo+GitHub-for-Windows/" itemprop="url">Hexo+GitHub搭建个人博客  for Windows</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-20T00:00:00+08:00">
-                2019-05-20
-              </time>
+              <a href="/2019/05/20/Hexo+GitHub-for-Windows/" rel="next" title="Hexo+GitHub搭建个人博客  for Windows">
+                <i class="fa fa-chevron-left"></i> Hexo+GitHub搭建个人博客  for Windows
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-		  
-		  
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/20/Hexo+GitHub-for-Windows/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-	
-	<div>
-	  
-	</div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -482,141 +412,11 @@
   </article>
 
 
-    
-      
 
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/18/my-first-blogs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="于宪涛">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Carson">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/18/my-first-blogs/" itemprop="url">你好</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-18T15:49:31+08:00">
-                2019-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-		  
-		  
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="我的朋友"><a href="#我的朋友" class="headerlink" title="我的朋友"></a>我的朋友</h3><p>你觉得凭我的资质可不可以成为一个一线男模?</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/18/my-first-blogs/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-	
-	<div>
-	  
-	</div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -624,6 +424,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -644,8 +448,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -705,6 +518,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、-概述"><span class="nav-number">1.</span> <span class="nav-text">一、 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">1.0.1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#l-什么是数据结构？"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">l  什么是数据结构？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l-数据的存储结构"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">l  数据的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序存储结构-gt"><span class="nav-number">1.0.1.2.1.</span> <span class="nav-text">顺序存储结构&gt;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#链式存储结构-gt"><span class="nav-number">1.0.1.2.2.</span> <span class="nav-text">链式存储结构&gt;</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#l-数据的逻辑结构"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">l  数据的逻辑结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-集合结构"><span class="nav-number">1.0.1.3.1.</span> <span class="nav-text">1.集合结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-线性结构"><span class="nav-number">1.0.1.3.2.</span> <span class="nav-text">2.线性结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-树形结构"><span class="nav-number">1.0.1.3.3.</span> <span class="nav-text">3.树形结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-图形结构"><span class="nav-number">1.0.1.3.4.</span> <span class="nav-text">4.图形结构</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -862,6 +691,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
