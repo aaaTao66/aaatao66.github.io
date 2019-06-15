@@ -7,18 +7,16 @@
 
 
 
-    <meta name="description" content="HBas是Hadoop数据库，是一个分布式，可扩展的大数据存储。 这一章博客不介绍如何搭建Hbase,只介绍API代码的编写">
+    <meta name="keywords" content="Hbase">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HBase-API操作">
 <meta property="og:url" content="http://yoursite.com/2019/06/12/HBaseAPI/index.html">
 <meta property="og:site_name" content="Carson">
-<meta property="og:description" content="HBas是Hadoop数据库，是一个分布式，可扩展的大数据存储。 这一章博客不介绍如何搭建Hbase,只介绍API代码的编写">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-15T07:26:45.938Z">
+<meta property="og:updated_time" content="2019-06-15T13:25:26.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HBase-API操作">
-<meta name="twitter:description" content="HBas是Hadoop数据库，是一个分布式，可扩展的大数据存储。 这一章博客不介绍如何搭建Hbase,只介绍API代码的编写">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -86,6 +84,8 @@
 
 
 <link rel="stylesheet" href="/css/style.css">
+	<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -124,6 +124,10 @@
                     </a>
                     
                 
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
                 
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
@@ -167,12 +171,14 @@
             
         </h1>
         <div class="content">
-            <p>HBas是Hadoop数据库，是一个分布式，可扩展的大数据存储。</p>
-<p>这一章博客不介绍如何搭建Hbase,只介绍API代码的编写</p>
-<p><img src="/2019/06/12/HBaseAPI/1.png" alt></p>
+            <p><img src="/2019/06/12/HBaseAPI/1.png" alt></p>
 <a id="more"></a>
+<blockquote>
+<p>HBas是Hadoop数据库，是一个分布式，可扩展的大数据存储。</p>
+<p>这一章博客不介绍如何搭建Hbase,只介绍API代码的编写</p>
 <p>HBase官方网站: <a href="https://hbase.apache.org/" target="_blank" rel="noopener">https://hbase.apache.org/</a></p>
 <p>HBase中文文档: <a href="http://abloz.com/hbase/book.html" target="_blank" rel="noopener">http://abloz.com/hbase/book.html</a></p>
+</blockquote>
 <hr>
 <h2 id="为什么要用Hbase"><a href="#为什么要用Hbase" class="headerlink" title="为什么要用Hbase?"></a>为什么要用Hbase?</h2><p>来看看官方解释:</p>
 <blockquote>
@@ -263,6 +269,15 @@
 
         </div>
         
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Hbase/">Hbase</a>
+                </div>
+            </div>
+        </div>
+        
         
         
     </div>
@@ -293,19 +308,6 @@
     <span>Wechat</span>
     <div class="qrcode"><img src="/images/weixin.jpg" alt="Wechat"></div>
 </a>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
 
                 
         </div>
@@ -389,7 +391,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>
@@ -399,7 +401,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        6
                     </p>
                 </div>
             </div>
@@ -448,6 +450,41 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#为什么要用Hbase">
+        <span class="has-mr-6">1</span>
+        <span>为什么要用Hbase?</span>
+        </a></li><li>
+        <a class="is-flex" href="#基本概念">
+        <span class="has-mr-6">2</span>
+        <span>基本概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#创建HBase项目">
+        <span class="has-mr-6">3</span>
+        <span>创建HBase项目</span>
+        </a></li><li>
+        <a class="is-flex" href="#HBase-Shell简单验证操作">
+        <span class="has-mr-6">4</span>
+        <span>HBase Shell简单验证操作</span>
+        </a></li><li>
+        <a class="is-flex" href="#内存优化">
+        <span class="has-mr-6">5</span>
+        <span>内存优化</span>
+        </a></li><li>
+        <a class="is-flex" href="#HBase在商业项目中的能力">
+        <span class="has-mr-6">6</span>
+        <span>HBase在商业项目中的能力</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -510,6 +547,14 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Spring-SpringMVC-MyBatis/">
+            <span class="level-start">
+                <span class="level-item">Spring-SpringMVC-MyBatis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/博客搭建/">
             <span class="level-start">
                 <span class="level-item">博客搭建</span>
@@ -532,6 +577,15 @@
 </div>
     
         
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/SSM框架/" style="font-size: 10px;">SSM框架</a> <a href="/tags/Spring-Boot/" style="font-size: 20px;">Spring Boot</a> <a href="/tags/我的博客搭建过程/" style="font-size: 10px;">我的博客搭建过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -684,6 +738,48 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hadoop/">
+                        <span class="tag">Hadoop</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hbase/">
+                        <span class="tag">Hbase</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SSM框架/">
+                        <span class="tag">SSM框架</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring-Boot/">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/我的博客搭建过程/">
+                        <span class="tag">我的博客搭建过程</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -849,6 +945,48 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hadoop/">
+                        <span class="tag">Hadoop</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hbase/">
+                        <span class="tag">Hbase</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SSM框架/">
+                        <span class="tag">SSM框架</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring-Boot/">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/我的博客搭建过程/">
+                        <span class="tag">我的博客搭建过程</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -1040,5 +1178,15 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
+	
+	<div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '<API_ID>',
+            appKey: '<API_Key>'
+        })
+    </script>
+
 </body>
 </html>

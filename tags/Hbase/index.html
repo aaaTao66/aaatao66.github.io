@@ -2,24 +2,22 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Spring Boot--开发Web应用-Thymeleaf(二) - Carson</title>
+<title>Tag: Hbase - Carson</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="以下文章大部分文字转自: 程序员DD 我会根据程序员DD的文章进行学习 如果你没有使用过Spring boot , 我的上一篇博客可能会更适合你">
-<meta name="keywords" content="Spring Boot">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot--开发Web应用-Thymeleaf(二)">
-<meta property="og:url" content="http://yoursite.com/2019/05/26/springboot-web/index.html">
+    <meta name="description" content="这个博客，主要是为了自己记笔记用，使用Hexo框架搭建，GitHub域名支持，QQ：3230452986">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Carson">
+<meta property="og:url" content="http://yoursite.com/tags/Hbase/index.html">
 <meta property="og:site_name" content="Carson">
-<meta property="og:description" content="以下文章大部分文字转自: 程序员DD 我会根据程序员DD的文章进行学习 如果你没有使用过Spring boot , 我的上一篇博客可能会更适合你">
+<meta property="og:description" content="这个博客，主要是为了自己记笔记用，使用Hexo框架搭建，GitHub域名支持，QQ：3230452986">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-15T13:23:21.972Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Boot--开发Web应用-Thymeleaf(二)">
-<meta name="twitter:description" content="以下文章大部分文字转自: 程序员DD 我会根据程序员DD的文章进行学习 如果你没有使用过Spring boot , 我的上一篇博客可能会更适合你">
+<meta name="twitter:title" content="Carson">
+<meta name="twitter:description" content="这个博客，主要是为了自己记笔记用，使用Hexo框架搭建，GitHub域名支持，QQ：3230452986">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -96,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Spring Boot--开发Web应用-Thymeleaf(二)" height="28">
+                <img src="/images/logo.svg" alt="Carson" height="28">
             
             </a>
         </div>
@@ -128,10 +126,6 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -146,22 +140,33 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Hbase</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-26T02:38:15.204Z">2019-05-26</time>
+                <time class="level-item has-text-grey" datetime="2019-06-11T16:00:00.000Z">2019-06-12</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Spring-Boot/">Spring Boot</a>
+                <a class="has-link-grey -link" href="/categories/Hadoop生态圈/">Hadoop生态圈</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes read (About 1357 words)
+                    12 minutes read (About 1737 words)
                 </span>
                 
                 
@@ -170,127 +175,31 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Spring Boot--开发Web应用-Thymeleaf(二)
+                <a class="has-link-black-ter" href="/2019/06/12/HBaseAPI/">HBase-API操作</a>
             
         </h1>
         <div class="content">
-            <p>以下文章大部分文字转自: <a href="http://blog.didispace.com/springbootweb/" target="_blank" rel="noopener">程序员DD</a></p>
-<p>我会根据程序员DD的文章进行学习</p>
-<p>如果你没有使用过Spring boot , 我的上一篇博客可能会更适合你</p>
-<a id="more"></a>
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>win10</p>
-<p>idea 2019.1.1</p>
-<p>jdk1.8</p>
-<p>一双手</p>
-<h2 id="静态资源访问"><a href="#静态资源访问" class="headerlink" title="静态资源访问"></a>静态资源访问</h2><p>在我们开发Web应用的时候，需要引用大量的js、css、图片等静态资源。</p>
-<h3 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h3><p>Spring Boot默认提供静态资源目录位置需置于classpath下，目录名需符合如下规则：</p>
-<ul>
-<li>/static</li>
-<li>/public</li>
-<li>/resources</li>
-<li>/META-INF/resources</li>
-</ul>
-<p>举例：我们可以在<code>src/main/resources/</code>目录下创建<code>static</code>，在该位置放置一个图片文件。启动程序后，尝试访问<code>http://localhost:8080/D.jpg</code>。如能显示图片，配置成功。</p>
-<h2 id="渲染Web页面"><a href="#渲染Web页面" class="headerlink" title="渲染Web页面"></a>渲染Web页面</h2><p>在之前的示例中，我们都是通过@RestController来处理请求，所以返回的内容为json对象。那么如果需要渲染html页面的时候，要如何实现呢？</p>
-<h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><p>在动态HTML实现上Spring Boot依然可以完美胜任，并且提供了多种模板引擎的默认配置支持，所以在推荐的模板引擎下，我们可以很快的上手开发动态网站。</p>
-<p>Spring Boot提供了默认配置的模板引擎主要有以下几种：</p>
-<ul>
-<li>Thymeleaf</li>
-<li>FreeMarker</li>
-<li>Velocity</li>
-<li>Groovy</li>
-<li>Mustache</li>
-</ul>
-<p><strong>Spring Boot建议使用这些模板引擎，避免使用JSP，若一定要使用JSP将无法实现Spring Boot的多种特性(上一篇博客我加了一些东西,使spring boot支持了jsp)</strong></p>
-<p>当你使用上述模板引擎中的任何一个，它们默认的模板配置路径为：<code>src/main/resources/templates</code>。当然也可以修改这个路径，具体如何修改，可在后续各模板引擎的配置属性中查询并修改。</p>
-<h4 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h4><p>Thymeleaf是一个XML/XHTML/HTML5模板引擎，可用于Web与非Web环境中的应用开发。它是一个开源的Java库，基于Apache License 2.0许可，由Daniel Fernández创建，该作者还是Java加密库Jasypt的作者。</p>
-<p>Thymeleaf提供了一个用于整合Spring MVC的可选模块，在应用开发中，你可以使用Thymeleaf来完全代替JSP或其他模板引擎，如Velocity、FreeMarker等。Thymeleaf的主要目标在于提供一种可被浏览器正确显示的、格式良好的模板创建方式，因此也可以用作静态建模。你可以使用它创建经过验证的XML与HTML模板。相对于编写逻辑或代码，开发者只需将标签属性添加到模板中即可。接下来，这些标签属性就会在DOM（文档对象模型）上执行预先制定好的逻辑。</p>
-<p>示例模板：</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">"#&#123;msgs.headers.name&#125;"</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">"#&#123;msgs.headers.price&#125;"</span>&gt;</span>Price<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">th:each</span>=<span class="hljs-string">"prod : $&#123;allProducts&#125;"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">"$&#123;prod.name&#125;"</span>&gt;</span>Oranges<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">"$&#123;#numbers.formatDecimal(prod.price,1,2)&#125;"</span>&gt;</span>0.99<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>可以看到Thymeleaf主要以属性的方式加入到html标签中，浏览器在解析html时，当检查到没有的属性时候会忽略，所以Thymeleaf的模板可以通过浏览器直接打开展现，这样非常有利于前后端的分离。</p>
-<p>在Spring Boot中使用Thymeleaf，只需要引入下面依赖，并在默认的模板路径<code>src/main/resources/templates</code>下编写模板文件即可完成。</p>
-<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>在完成配置之后，举一个简单的例子，在快速入门工程的基础上，举一个简单的示例来通过Thymeleaf渲染一个页面。 controller里面加一个这个方法</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/"</span>)</span><br><span class="line">   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">index</span><span class="hljs-params">(ModelMap map)</span></span>&#123;</span><br><span class="line">       <span class="hljs-comment">// 加入一个属性,用来在模板中读取</span></span><br><span class="line">       map.addAttribute(<span class="hljs-string">"host"</span>,<span class="hljs-string">"https://aaatao66.github.io/"</span>);</span><br><span class="line">       <span class="hljs-comment">// return模板文件的名称,对应 src/main/resources/templates/index.html</span></span><br><span class="line">       <span class="hljs-keyword">return</span> <span class="hljs-string">"index"</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>HTML:</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span> <span class="hljs-attr">xmlns:th</span>=<span class="hljs-string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">"$&#123;host&#125;"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如上页面，直接打开html页面展现Hello World，但是启动程序后，访问<code>http://localhost:8080/</code>，则是展示Controller中host的值：<code>https://aaatao66.github.io/</code>，做到了不破坏HTML自身内容的数据逻辑分离。</p>
-<p>更多Thymeleaf的页面语法，还请访问Thymeleaf的官方文档查询使用:<a href="https://www.thymeleaf.org/" target="_blank" rel="noopener">Thymeleaf官网</a></p>
-<p><strong>Thymeleaf的默认参数配置</strong></p>
-<p>如有需要修改默认配置的时候，只需复制下面要修改的属性到<code>application.properties</code>中，并修改成需要的值，如修改模板文件的扩展名，修改默认的模板路径等。</p>
-<p>我使用的是 yml 方式,语法不同 ,如果你使用的是 properties 那么你可以参考一下:</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Enable template caching.</span><br><span class="line">spring.thymeleaf.cache=true </span><br><span class="line"># Check that the templates location exists.</span><br><span class="line">spring.thymeleaf.check-template-location=true </span><br><span class="line"># Content-Type value.</span><br><span class="line">spring.thymeleaf.content-type=text/html </span><br><span class="line"># Enable MVC Thymeleaf view resolution.</span><br><span class="line">spring.thymeleaf.enabled=true </span><br><span class="line"># Template encoding.</span><br><span class="line">spring.thymeleaf.encoding=UTF-8 </span><br><span class="line"># Comma-separated list of view names that should be excluded from resolution.</span><br><span class="line">spring.thymeleaf.excluded-view-names= </span><br><span class="line"># Template mode to be applied to templates. See also StandardTemplateModeHandlers.</span><br><span class="line">spring.thymeleaf.mode=HTML5 </span><br><span class="line"># Prefix that gets prepended to view names when building a URL.</span><br><span class="line">spring.thymeleaf.prefix=classpath:/templates/ </span><br><span class="line"># Suffix that gets appended to view names when building a URL.</span><br><span class="line">spring.thymeleaf.suffix=.html  spring.thymeleaf.template-resolver-order= # Order of the template resolver in the chain. spring.thymeleaf.view-names= # Comma-separated list of view names that can be resolved.</span><br></pre></td></tr></table></figure>
-<h3 id="支持JSP的配置"><a href="#支持JSP的配置" class="headerlink" title="支持JSP的配置"></a>支持JSP的配置</h3><p>Spring Boot并不建议使用，但如果一定要使用,<a href="https://aaatao66.github.io/2019/05/25/springboot/" target="_blank" rel="noopener">可以参考我上一篇文章</a></p>
-
+            <p><img src="/2019/06/12/HBaseAPI/1.png" alt></p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Spring-Boot/">Spring Boot</a>
+                <a class="button is-size-7 is-light" href="/2019/06/12/HBaseAPI/#more">Read More</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>Alipay</span>
-    <div class="qrcode"><img src="/images/zhifubao.jpg" alt="Alipay"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/weixin.jpg" alt="Wechat"></div>
-</a>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/31/hadoop/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Hadoop--Hello,Hadoop!</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/25/springboot/">
-                <span class="level-item">Spring Boot--你好Spring Boot(一)</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
 
 
 </div>
@@ -405,45 +314,6 @@
 </div>
     
         
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Catalogue
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#开发环境">
-        <span class="has-mr-6">1</span>
-        <span>开发环境</span>
-        </a></li><li>
-        <a class="is-flex" href="#静态资源访问">
-        <span class="has-mr-6">2</span>
-        <span>静态资源访问</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#默认配置">
-        <span class="has-mr-6">2.1</span>
-        <span>默认配置</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#渲染Web页面">
-        <span class="has-mr-6">3</span>
-        <span>渲染Web页面</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#模板引擎">
-        <span class="has-mr-6">3.1</span>
-        <span>模板引擎</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Thymeleaf">
-        <span class="has-mr-6">3.1.1</span>
-        <span>Thymeleaf</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#支持JSP的配置">
-        <span class="has-mr-6">3.2</span>
-        <span>支持JSP的配置</span>
-        </a></li></ul></li></ul>
-        </div>
-    </div>
-</div>
-
     
         
 
@@ -964,7 +834,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Spring Boot--开发Web应用-Thymeleaf(二)" height="28">
+                    <img src="/images/logo.svg" alt="Carson" height="28">
                 
                 </a>
                 <p class="is-size-7">
