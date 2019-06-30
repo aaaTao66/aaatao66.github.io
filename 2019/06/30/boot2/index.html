@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>Spring Boot深入系列--配置文件 - Carson</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="keywords" content="Spring Boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot深入系列--配置文件">
+<meta property="og:url" content="http://yoursite.com/2019/06/30/boot2/index.html">
+<meta property="og:site_name" content="Carson">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-06-30T08:20:22.523Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring Boot深入系列--配置文件">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+	<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Spring Boot深入系列--配置文件" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归纳</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/aaaTao66">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+	
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-29T16:00:00.000Z">2019-06-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Spring-Boot/">Spring Boot</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 minutes read (About 2195 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Spring Boot深入系列--配置文件
+            
+        </h1>
+        <div class="content">
+            <p><img src="/2019/06/30/boot2/sb.png" alt="SpringBoot"></p>
+<a id="more"></a>
+<hr>
+<p>开发环境:</p>
+<ul>
+<li>win10</li>
+<li>jdk1.8</li>
+<li>idea2019</li>
+<li>maven 3.2.5</li>
+<li>Spring Boot v2.1.5.RELEASE (版本)</li>
+</ul>
+<hr>
+<p><img src="/2019/06/30/boot2/QQ截图20190630121733.png" alt="SpringBoot的配置文件"></p>
+<h3 id="1-yml文件的语法概览"><a href="#1-yml文件的语法概览" class="headerlink" title="1. yml文件的语法概览:"></a>1. yml文件的语法概览:</h3><figure class="highlight yaml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-attr">person:</span></span><br><span class="line"><span class="hljs-attr">  lastNAME:</span> <span class="hljs-string">carson</span></span><br><span class="line"><span class="hljs-attr">  age:</span> <span class="hljs-number">18</span></span><br><span class="line"><span class="hljs-attr">  boss:</span> <span class="hljs-literal">true</span></span><br><span class="line"><span class="hljs-attr">  birth:</span> <span class="hljs-number">1234</span><span class="hljs-string">/12/12</span></span><br><span class="line">  <span class="hljs-comment">#map写法: &#123;k: v,k2: v2&#125;</span></span><br><span class="line"><span class="hljs-attr">  maps:</span> <span class="hljs-string">&#123;k1:</span> <span class="hljs-string">v1,k2:</span> <span class="hljs-string">v2&#125;</span></span><br><span class="line">  <span class="hljs-comment">#数组写法:  -值</span></span><br><span class="line"><span class="hljs-attr">  lists:</span></span><br><span class="line"><span class="hljs-bullet">    -</span> <span class="hljs-string">lisi</span></span><br><span class="line"><span class="hljs-bullet">    -</span> <span class="hljs-string">zhangsan</span></span><br><span class="line"><span class="hljs-bullet">    -</span> <span class="hljs-string">wangwu</span></span><br><span class="line"><span class="hljs-bullet">    -</span> <span class="hljs-string">zhaoliu</span></span><br><span class="line"><span class="hljs-attr">  dog:</span></span><br><span class="line"><span class="hljs-attr">    name:</span> <span class="hljs-string">小狗</span></span><br><span class="line"><span class="hljs-attr">    age:</span> <span class="hljs-number">3</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-attr">spring:</span></span><br><span class="line"><span class="hljs-attr">   mvc:</span></span><br><span class="line"><span class="hljs-attr">     view:</span></span><br><span class="line"><span class="hljs-attr">       prefix:</span> <span class="hljs-string">/WEB-INF/views/</span></span><br><span class="line"><span class="hljs-attr">       suffix:</span> <span class="hljs-string">.jsp</span></span><br><span class="line"><span class="hljs-attr">   datasource:</span></span><br><span class="line"><span class="hljs-attr">     url:</span> <span class="hljs-attr">jdbc:mysql:///ssm</span></span><br><span class="line"><span class="hljs-attr">     username:</span> <span class="hljs-string">root</span></span><br><span class="line"><span class="hljs-attr">     password:</span> <span class="hljs-string">root</span></span><br><span class="line"><span class="hljs-attr">     driver-class-name:</span> <span class="hljs-string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="hljs-attr">   jpa:</span></span><br><span class="line"><span class="hljs-attr">     hibernate:</span></span><br><span class="line"><span class="hljs-attr">       ddl-auto:</span> <span class="hljs-string">update</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-attr">server:</span></span><br><span class="line"><span class="hljs-attr">  port:</span> <span class="hljs-number">9090</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-Value获取值和-ConfigurationProperties获取值比较"><a href="#2-Value获取值和-ConfigurationProperties获取值比较" class="headerlink" title="2. @Value获取值和 @ConfigurationProperties获取值比较"></a>2. @Value获取值和 @ConfigurationProperties获取值比较</h3><table>
+<thead>
+<tr>
+<th>@ConfigurationProperties</th>
+<th></th>
+<th>@Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>批量注入配置文件中的属性</td>
+<td>功能</td>
+<td>一个个指定</td>
+</tr>
+<tr>
+<td>支持</td>
+<td>松散绑定(松散语法)大小写</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>不支持</td>
+<td>SpEL表达式</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>支持</td>
+<td>JSR303数据校验</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>支持</td>
+<td>复杂类型封装</td>
+<td>不支持</td>
+</tr>
+</tbody>
+</table>
+<p>这两种方式都能获取值:</p>
+<ul>
+<li>如果,我们只是在某个业务逻辑中需要获取一下配置文件中的某项值,使用@Value</li>
+<li>如果,我们专门编写了一个javaBean来和配置文件进行映射;@ConfigurationProperties</li>
+</ul>
+<p>@Validated</p>
+<p>@Value</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Getter</span><span class="hljs-meta">@Setter</span></span><br><span class="line"><span class="hljs-meta">@ToString</span></span><br><span class="line"><span class="hljs-meta">@Component</span></span><br><span class="line"><span class="hljs-comment">//@ConfigurationProperties (prefix = "person")</span></span><br><span class="line"><span class="hljs-meta">@Validated</span> <span class="hljs-comment">// 来校验数据，如果数据异常则会统一抛出异常，方便异常中心统一处理。</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// @Email</span></span><br><span class="line">    <span class="hljs-meta">@Value</span>(<span class="hljs-string">"$&#123;person.lastNAME&#125;"</span>)</span><br><span class="line">    <span class="hljs-keyword">private</span> String lastNAME;</span><br><span class="line">    <span class="hljs-meta">@Value</span>(<span class="hljs-string">"#&#123;3*3&#125;"</span>)</span><br><span class="line">    <span class="hljs-keyword">private</span> Integer age;</span><br><span class="line">    <span class="hljs-keyword">private</span> Boolean boss;</span><br><span class="line">    <span class="hljs-keyword">private</span> Date birth;</span><br><span class="line">    <span class="hljs-keyword">private</span> Map&lt;String,Object&gt; maps;</span><br><span class="line">    <span class="hljs-keyword">private</span> List&lt;Object&gt; lists;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> Dog dog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-PropertySource-amp-ImportResource"><a href="#3-PropertySource-amp-ImportResource" class="headerlink" title="3. @PropertySource&amp;@ImportResource"></a>3. @PropertySource&amp;@ImportResource</h3><p>因为 @ConfigurationProperties 是全局注解,如果想指定的话</p>
+<ul>
+<li>@PropertySource:可以指定某个文件 @PropertySource(“classpath: xxx.properties)</li>
+</ul>
+<p>@ImportResource: 导入Spring配置文件,让配置文件里面的内容生效</p>
+<ul>
+<li>创建一个HelloService 类<ul>
+<li>如果没有注解情况下</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="hljs-tag">       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"helloService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.carson.springboot.service.impl.HelloService"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Autowired</span></span><br><span class="line">  ApplicationContext ioc;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-meta">@Test</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testHelloService</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">      <span class="hljs-comment">// 是否是包含 这个 bean</span></span><br><span class="line">      <span class="hljs-keyword">boolean</span> b = ioc.containsBean(<span class="hljs-string">"helloService"</span>);</span><br><span class="line">      System.out.println(b);<span class="hljs-comment">//false</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>false 说明Spring Boot 里面没有Spring的配置文件,我们自己编写的配置文件,也不能自动识别</p>
+<p>如果想让Spring的配置文件生效,加载进来; 就 <strong>把@ImportResource</strong>标注在一个配置类上</p>
+<ul>
+<li>主类</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@ImportResource</span>(locations = &#123;<span class="hljs-string">"classpath:beans.xml"</span>&#125;)</span><br><span class="line"><span class="hljs-meta">@SpringBootApplication</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpringbootApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(SpringbootApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Autowired</span></span><br><span class="line">  ApplicationContext ioc;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-meta">@Test</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testHelloService</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">      <span class="hljs-comment">// 是否是包含 这个 bean</span></span><br><span class="line">      <span class="hljs-keyword">boolean</span> b = ioc.containsBean(<span class="hljs-string">"helloService"</span>);</span><br><span class="line">      System.out.println(b);<span class="hljs-comment">//true</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>SpringBoot推荐给容器中添加组件的方式:</p>
+<p>使用 @Bean</p>
+<ul>
+<li>1, 配置类======Spring配置文件<ul>
+<li>建一个包 config,专门放配置类:MyAppConfig<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@Configuration</span>: 指明当前类是一个配置类;就是来代替之前的Spring配置文件</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * 以前配置文件总 用 &lt;bean&gt;&lt;/bean&gt; 标签添加组件</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Configuration</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAppConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 将方法的返回值添加到容器中,容器中这几个组件默认的id就是方法名</span></span><br><span class="line">    <span class="hljs-meta">@Bean</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> HelloService <span class="hljs-title">helloService</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HelloService();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>记得把之前主类的@ImportResource注解 去掉!</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">输出结果:</span><br><span class="line"></span><br><span class="line">  .   ____          _            __ _ _</span><br><span class="line"> /\\ / ___&apos;_ __ _ _(_)_ __  __ _ \ \ \ \</span><br><span class="line">( ( )\___ | &apos;_ | &apos;_| | &apos;_ \/ _` | \ \ \ \</span><br><span class="line"> \\/  ___)| |_)| | | | | || (_| |  ) ) ) )</span><br><span class="line">  &apos;  |____| .__|_| |_|_| |_\__, | / / / /</span><br><span class="line"> =========|_|==============|___/=/_/_/_/</span><br><span class="line"> :: Spring Boot ::        (v2.1.5.RELEASE)</span><br><span class="line"></span><br><span class="line">2019-06-29 16:53:48.081  INFO 11084 --- [           main] c.c.s.SpringbootApplicationTests         : Starting SpringbootApplicationTests on DESKTOP-JBSD6AK with PID 11084 (started by My in F:\code\springboot)</span><br><span class="line">2019-06-29 16:53:48.083  INFO 11084 --- [           main] c.c.s.SpringbootApplicationTests         : No active profile set, falling back to default profiles: default</span><br><span class="line">2019-06-29 16:53:52.689  INFO 11084 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService &apos;applicationTaskExecutor&apos;</span><br><span class="line">2019-06-29 16:53:53.988  INFO 11084 --- [           main] c.c.s.SpringbootApplicationTests         : Started SpringbootApplicationTests in 7.259 seconds (JVM running for 10.759)</span><br><span class="line">true </span><br><span class="line">2019-06-29 16:53:54.433  INFO 11084 --- [       Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService &apos;applicationTaskExecutor&apos;</span><br></pre></td></tr></table></figure>
+<p>也是 true</p>
+<h3 id="4-配置文件里的"><a href="#4-配置文件里的" class="headerlink" title="4. 配置文件里的 ${}"></a>4. 配置文件里的 ${}</h3><h4 id="random随机数"><a href="#random随机数" class="headerlink" title="random随机数"></a>random随机数</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$&#123;random.value&#125;</span><br><span class="line">$&#123;random.int&#125;</span><br><span class="line">$&#123;random.long&#125;</span><br><span class="line">$&#123;random.int(10)&#125;</span><br><span class="line">$&#123;random.int[1024,65536]&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="获取-之前配置的值"><a href="#获取-之前配置的值" class="headerlink" title="${} 获取 之前配置的值"></a>${} 获取 之前配置的值</h4><figure class="highlight yaml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">person:</span></span><br><span class="line"><span class="hljs-attr">  lastNAME:</span> <span class="hljs-string">bob$&#123;random.uuid&#125;</span></span><br><span class="line"><span class="hljs-attr">  age:</span> <span class="hljs-string">$&#123;random.int&#125;</span></span><br><span class="line"><span class="hljs-attr">  boss:</span> <span class="hljs-literal">true</span></span><br><span class="line"><span class="hljs-attr">  birth:</span> <span class="hljs-number">1234</span><span class="hljs-string">/12/12</span></span><br><span class="line"><span class="hljs-attr">  maps:</span> <span class="hljs-string">&#123;k1:</span> <span class="hljs-string">v1,k2:</span> <span class="hljs-string">v2&#125;</span></span><br><span class="line"><span class="hljs-attr">  lists:</span></span><br><span class="line"><span class="hljs-bullet">    -</span> <span class="hljs-string">lisi</span></span><br><span class="line"><span class="hljs-bullet">    -</span> <span class="hljs-string">zhangsan</span></span><br><span class="line"><span class="hljs-bullet">    -</span> <span class="hljs-string">wangwu</span></span><br><span class="line"><span class="hljs-bullet">    -</span> <span class="hljs-string">zhaoliu</span></span><br><span class="line"><span class="hljs-attr">  dog:</span></span><br><span class="line"><span class="hljs-attr">    name:</span> <span class="hljs-string">$&#123;person.lastNAME&#125;_dog</span></span><br><span class="line"><span class="hljs-attr">    age:</span> <span class="hljs-number">3</span></span><br></pre></td></tr></table></figure>
+<p>如果</p>
+<figure class="highlight yaml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">  dog:</span></span><br><span class="line"><span class="hljs-attr">name:</span> <span class="hljs-string">$&#123;person.lastNAME&#125;_dog</span></span><br></pre></td></tr></table></figure>
+<p>如果lastNAME没有的话, 那就</p>
+<figure class="highlight yaml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">  dog:</span></span><br><span class="line"><span class="hljs-attr">name:</span> <span class="hljs-string">$&#123;person.lastNAME:hello&#125;_dog</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-Profile"><a href="#5-Profile" class="headerlink" title="5. Profile"></a>5. Profile</h3><h4 id="5-1-多个Profile-文件"><a href="#5-1-多个Profile-文件" class="headerlink" title="5.1 多个Profile 文件"></a>5.1 多个Profile 文件</h4><blockquote>
+<p><strong>Profile是Spring对不同环境提供不同配置功能的支持,可以通过指定参数等方式快速切换环境</strong></p>
+<p>比如我配置3个端口,一个默认的,一个dev(开发),一个prod(测试)</p>
+</blockquote>
+<p>主配置文件名可以是 application.yml/application.properties</p>
+<p>默认使用application.yml的配置;</p>
+<h4 id="5-2-yml的多文档块"><a href="#5-2-yml的多文档块" class="headerlink" title="5.2 yml的多文档块"></a>5.2 yml的多文档块</h4><p>以 — 分隔 文档快</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: dev </span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">  port: 9090</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">  port: 9091</span><br><span class="line">spring:</span><br><span class="line">  profiles: dev </span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">  port: 9092</span><br><span class="line">spring:</span><br><span class="line">  profiles: prod</span><br></pre></td></tr></table></figure>
+<ul>
+<li>active:是指定哪个文档快</li>
+<li>profiles: 指定一个名称,让active识别的</li>
+</ul>
+<h4 id="5-3-激活指定profile"><a href="#5-3-激活指定profile" class="headerlink" title="5.3 激活指定profile"></a>5.3 激活指定profile</h4><p>1, 在配置文件中指定 spring.profiles.active=dev</p>
+<p>2, 命令行:</p>
+<p>idea功能栏中的 run &gt; edit &gt; program arguments 添加上</p>
+<blockquote>
+<p> –spring.profiles.active=prod</p>
+</blockquote>
+<blockquote>
+<p> –spring.profiles.active=dev</p>
+</blockquote>
+<p>3,cmd中 将 项目打成 jar包 </p>
+<blockquote>
+<p>java -jar   (jar包名)   –spring.profiles.active=prod</p>
+</blockquote>
+<p>4, 虚拟机 参数:</p>
+<p>idea功能栏中的 run &gt; edit &gt;VM options 添加上</p>
+<blockquote>
+<p>-Dspring.profiles.active=prod/dev</p>
+</blockquote>
+<hr>
+<h3 id="6-Spring-Boot配置文件的加载位置"><a href="#6-Spring-Boot配置文件的加载位置" class="headerlink" title="6.Spring Boot配置文件的加载位置"></a>6.Spring Boot配置文件的加载位置</h3><blockquote>
+<p>Spring Boot 启动会扫描以下位置的application.yml或application.properties文件作为默认配置文件</p>
+<ul>
+<li>file: ./config/</li>
+<li>file: ./</li>
+<li>classpath: ./config/</li>
+<li>classpath: /</li>
+</ul>
+<p><strong>以上是按照优先级从高到低</strong>的顺序,所有的配置文件都会被加载,<strong>高优先级配置</strong>会覆盖 <strong>低优先级配置</strong></p>
+</blockquote>
+<p>file : 跟src平级的目录</p>
+<p>classpath: resources目录下的</p>
+<p><strong>我们也可以通过配置spring.config.location来改变默认配置文件位置</strong>:</p>
+<p>1.将项目打包</p>
+<p>2.命令行格式:  java -jar  包名   –spring.config.location= F:/app/application.properties(配置文件绝对路径)</p>
+<p>项目打包之后可能后来会需要修改一些配置,就可以使用这种方式,并且旧配置还会存在,新配置也会应用上</p>
+<h3 id="7-外部配置加载顺序"><a href="#7-外部配置加载顺序" class="headerlink" title="7.外部配置加载顺序"></a>7.外部配置加载顺序</h3><blockquote>
+<p>SpringBoot也可以从以下位置加载配置,优先级从高到低,高优先级覆盖低优先级,如果有不同的配置,<strong>就会形成互补</strong></p>
+</blockquote>
+<ol>
+<li><p>命令行参数</p>
+<blockquote>
+<p>java -jar xxx.jar –server.port=8081 –xxx</p>
+<p>多个配置用空格分开: –xxx –xxx</p>
+</blockquote>
+</li>
+<li><p>来自java:comp/env的NDI属性</p>
+</li>
+<li><p>Java系统属性(System.getProperties())</p>
+</li>
+<li><p>操作系统环境变量</p>
+</li>
+<li><p>RandomValuePropertySource配置的random.*属性值</p>
+</li>
+</ol>
+<p>由jar包外向jar包内进行寻找:</p>
+<p><strong>优先加载带profile的</strong></p>
+<ol>
+<li><strong>jar包”外”部的application-{profile}.properties或application.yml(带spring.profile)的配置文件</strong></li>
+<li><strong>jar包’’内’’部的application-{profile}.properties或application.yml(带spring.profile)的配置文件</strong></li>
+</ol>
+<p><strong>再来加载不带profile的</strong></p>
+<ol>
+<li><strong>jar包’’外’’部的application.properties或application.yml(不带spring.profile)的配置文件</strong></li>
+<li><strong>jar包’’内’’部的application.properties或application.yml(不带spring.profile)的配置文件</strong></li>
+</ol>
+<p>还有其他的:</p>
+<ol>
+<li>@Configuration注解类上的@PropertySource</li>
+<li><p>通过SrpingApplication.setDefaultProperties指定默认属性</p>
+<p><a href="https://docs.spring.io/spring-boot/docs/2.1.5.RELEASE/reference/htmlsingle/#boot-features-external-config" target="_blank" rel="noopener">详情参考官网文档的第 24章</a></p>
+</li>
+</ol>
+<h3 id="8-自动配置原理-重点"><a href="#8-自动配置原理-重点" class="headerlink" title="8.自动配置原理(重点)"></a>8.自动配置原理(重点)</h3><p>自动配置到底能些什么?怎么写?自动配置原理:</p>
+<p><a href="https://docs.spring.io/spring-boot/docs/2.1.5.RELEASE/reference/htmlsingle/#appendix" target="_blank" rel="noopener">文档地址</a></p>
+<p>查看目录最后一章 X. Appendices<img src="/2019/06/30/boot2/QQ截图20190630130501.png" alt="官方文档"></p>
+<p>这里面说明了都有哪些配置项</p>
+<p>其实:</p>
+<ul>
+<li>1.SpringBoot启动会加载大量的自动配置类</li>
+<li>2.我们看我们需要的功能有没有SpringBoot默认写好的自动配置类</li>
+<li>3.我们再来看这个自动配置类到底配置了哪些组件(只要我们要用的组件有,我们就不需要再来配置了)</li>
+<li>4.给容器中自动配置类添加组建的时候,会从properties类中获取某些属性,我们就可以在配置文件中指定这些属性的值</li>
+</ul>
+<p>xxxxAutoConfigurartion: 自动配置类;</p>
+<p>给容器中添加组件</p>
+<p>xxxxProperties:封装配置文件中相关属性;</p>
+<p>技巧:</p>
+<p>idea双击Shift,搜索 *AutoConfiguration</p>
+<p><img src="/2019/06/30/boot2/QQ截图20190630153331.png" alt="carson"></p>
+<p>点开缓存相关的自动配置</p>
+<p>我们将会看到以下源码:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@EnableConfigurationProperties</span>(&#123;CacheProperties.class&#125;)</span><br><span class="line"><span class="hljs-meta">@AutoConfigureAfter</span>(&#123;CouchbaseAutoConfiguration.class, HazelcastAutoConfiguration.class, HibernateJpaAutoConfiguration.class, RedisAutoConfiguration.class&#125;)</span><br><span class="line"><span class="hljs-meta">@Import</span>(&#123;CacheAutoConfiguration.CacheConfigurationImportSelector.class&#125;)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CacheAutoConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CacheAutoConfiguration</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>ctrl+鼠标左键点击:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@EnableConfigurationProperties</span>(&#123;CacheProperties.class&#125;)</span><br><span class="line"><span class="hljs-comment">//点击 CacheProperties</span></span><br></pre></td></tr></table></figure>
+<p>我们会看到在CacheProperties类上:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@ConfigurationProperties</span>(</span><br><span class="line">    prefix = <span class="hljs-string">"spring.cache"</span></span><br><span class="line">)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CacheProperties</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+<p>prefix = “spring.cache”  : 就是在yml/properties配置文件的语法前缀</p>
+<p>至于能配置哪些具体东西?</p>
+<p>就是这些</p>
+<p><img src="/2019/06/30/boot2/QQ截图20190630154123.png" alt="carson"></p>
+<p>或者你可以利用idea的代码提示在配置文件里,比如我调用 第一个getType</p>
+<p><img src="/2019/06/30/boot2/QQ截图20190630154232.png" alt="carson"></p>
+<p>这就是通过源码的方式,来了解到我们可以在配置文件里配置什么东西</p>
+<p><strong>比如我想连接数据库</strong>,我来搜索一下</p>
+<p><img src="/2019/06/30/boot2/QQ截图20190630154611.png" alt="carson"></p>
+<p><img src="/2019/06/30/boot2/QQ截图20190630154644.png" alt="carson"></p>
+<p><img src="/2019/06/30/boot2/QQ截图20190630154729.png" alt="carson"></p>
+<p>我看到了我们的需要的字段,以及下面很多的方法(这里就不截图了)</p>
+<p><img src="/2019/06/30/boot2/QQ截图20190630154829.png" alt="carson"></p>
+<p>接下来就是到配置文件配置了:</p>
+<p><img src="/2019/06/30/boot2/QQ截图20190630154933.png" alt="carson"></p>
+<h3 id="9-细节"><a href="#9-细节" class="headerlink" title="9.细节"></a>9.细节</h3><h4 id="Conditional派生注解"><a href="#Conditional派生注解" class="headerlink" title="@Conditional派生注解"></a>@Conditional派生注解</h4><p><img src="/2019/06/30/boot2/QQ截图20190630155654.png" alt="carson"></p>
+<p>我发现源码中有很多的 @ConditionalOn*** </p>
+<p>它其实就是利用Spring底层的  @Conditional注解 </p>
+<p>QQ截图20190630155857.png</p>
+<p>作用: 必须是 @Conditional 指定的条件成立,才给容器中添加组件,配置类里面的内容才会生效,如果返回false那么,你配的东西都不会生效的</p>
+<p>SpringBoot 扩展了  @Conditional注解  比如:</p>
+<p><img src="/2019/06/30/boot2/QQ截图20190630160056.png" alt="carson"></p>
+<p>所以其实自动配置类必须在一定的条件下才能生效</p>
+<p>我们该怎么知道哪些类生效哪些没生效呢?很简单,在配置文件里添加:</p>
+<figure class="highlight yaml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span></span><br></pre></td></tr></table></figure>
+<p>然后运行我们的朱类:</p>
+<p>​    我们会看到:</p>
+<p><img src="/2019/06/30/boot2/yes.png" alt=" carosn"></p>
+<p>还有:</p>
+<p><img src="/2019/06/30/boot2/no.png" alt="carosn"></p>
+<p>都会在控制台打印输出</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Spring-Boot/">Spring Boot</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/zhifubao.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/weixin.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/25/dahua2/">
+                <span class="level-item">《大话数据结构》学习笔记-day02-算法</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/1.png" alt="于宪涛">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        于宪涛
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        热心的学习者 狂热的数码迷
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Beijing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        13
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.zhihu.com/people/san-ji-nei-ku/activities" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/aaaTao66">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/iloveueason">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#1-yml文件的语法概览">
+        <span class="has-mr-6">1</span>
+        <span>1. yml文件的语法概览:</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-Value获取值和-ConfigurationProperties获取值比较">
+        <span class="has-mr-6">2</span>
+        <span>2. @Value获取值和 @ConfigurationProperties获取值比较</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-PropertySource-amp-ImportResource">
+        <span class="has-mr-6">3</span>
+        <span>3. @PropertySource&amp;@ImportResource</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-配置文件里的">
+        <span class="has-mr-6">4</span>
+        <span>4. 配置文件里的 ${}</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#random随机数">
+        <span class="has-mr-6">4.1</span>
+        <span>random随机数</span>
+        </a></li><li>
+        <a class="is-flex" href="#获取-之前配置的值">
+        <span class="has-mr-6">4.2</span>
+        <span>${} 获取 之前配置的值</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#5-Profile">
+        <span class="has-mr-6">5</span>
+        <span>5. Profile</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#5-1-多个Profile-文件">
+        <span class="has-mr-6">5.1</span>
+        <span>5.1 多个Profile 文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-2-yml的多文档块">
+        <span class="has-mr-6">5.2</span>
+        <span>5.2 yml的多文档块</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-3-激活指定profile">
+        <span class="has-mr-6">5.3</span>
+        <span>5.3 激活指定profile</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#6-Spring-Boot配置文件的加载位置">
+        <span class="has-mr-6">6</span>
+        <span>6.Spring Boot配置文件的加载位置</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-外部配置加载顺序">
+        <span class="has-mr-6">7</span>
+        <span>7.外部配置加载顺序</span>
+        </a></li><li>
+        <a class="is-flex" href="#8-自动配置原理-重点">
+        <span class="has-mr-6">8</span>
+        <span>8.自动配置原理(重点)</span>
+        </a></li><li>
+        <a class="is-flex" href="#9-细节">
+        <span class="has-mr-6">9</span>
+        <span>9.细节</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Conditional派生注解">
+        <span class="has-mr-6">9.1</span>
+        <span>@Conditional派生注解</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.zhihu.com/people/san-ji-nei-ku/activities" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">知乎</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.zhihu.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Hadoop生态圈/">
+            <span class="level-start">
+                <span class="level-item">Hadoop生态圈</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Scala/">
+            <span class="level-start">
+                <span class="level-item">Scala</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Spring-Boot/">
+            <span class="level-start">
+                <span class="level-item">Spring Boot</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Spring-SpringMVC-MyBatis/">
+            <span class="level-start">
+                <span class="level-item">Spring-SpringMVC-MyBatis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/《大话数据结构》/">
+            <span class="level-start">
+                <span class="level-item">《大话数据结构》</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/博客搭建/">
+            <span class="level-start">
+                <span class="level-item">博客搭建</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/浅谈ios-Android-非技术/">
+            <span class="level-start">
+                <span class="level-item">浅谈ios/Android(非技术)</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/SSM框架/" style="font-size: 10px;">SSM框架</a> <a href="/tags/Scala/" style="font-size: 15px;">Scala</a> <a href="/tags/Spring-Boot/" style="font-size: 20px;">Spring Boot</a> <a href="/tags/我的博客搭建过程/" style="font-size: 10px;">我的博客搭建过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/闲聊/" style="font-size: 10px;">闲聊</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/30/boot2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Boot深入系列--配置文件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-29T16:00:00.000Z">2019-06-30</time></div>
+                    <a href="/2019/06/30/boot2/" class="has-link-black-ter is-size-6">Spring Boot深入系列--配置文件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Spring-Boot/">Spring Boot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/25/dahua2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《大话数据结构》学习笔记-day02-算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-24T16:00:00.000Z">2019-06-25</time></div>
+                    <a href="/2019/06/25/dahua2/" class="has-link-black-ter is-size-6">《大话数据结构》学习笔记-day02-算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/《大话数据结构》/">《大话数据结构》</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/24/dahua1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《大话数据结构》学习笔记-day01-数据结构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-23T16:00:00.000Z">2019-06-24</time></div>
+                    <a href="/2019/06/24/dahua1/" class="has-link-black-ter is-size-6">《大话数据结构》学习笔记-day01-数据结构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/《大话数据结构》/">《大话数据结构》</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/23/scala基本语法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="scala 环境搭建&amp;基本语法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-22T16:00:00.000Z">2019-06-23</time></div>
+                    <a href="/2019/06/23/scala基本语法/" class="has-link-black-ter is-size-6">scala 环境搭建&amp;基本语法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Scala/">Scala</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/22/scala1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="scala 入门">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-21T16:00:00.000Z">2019-06-22</time></div>
+                    <a href="/2019/06/22/scala1/" class="has-link-black-ter is-size-6">scala 入门</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Scala/">Scala</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hadoop/">
+                        <span class="tag">Hadoop</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hbase/">
+                        <span class="tag">Hbase</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SSM框架/">
+                        <span class="tag">SSM框架</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Scala/">
+                        <span class="tag">Scala</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring-Boot/">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/我的博客搭建过程/">
+                        <span class="tag">我的博客搭建过程</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/算法/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/闲聊/">
+                        <span class="tag">闲聊</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/30/boot2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Boot深入系列--配置文件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-29T16:00:00.000Z">2019-06-30</time></div>
+                    <a href="/2019/06/30/boot2/" class="has-link-black-ter is-size-6">Spring Boot深入系列--配置文件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Spring-Boot/">Spring Boot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/25/dahua2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《大话数据结构》学习笔记-day02-算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-24T16:00:00.000Z">2019-06-25</time></div>
+                    <a href="/2019/06/25/dahua2/" class="has-link-black-ter is-size-6">《大话数据结构》学习笔记-day02-算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/《大话数据结构》/">《大话数据结构》</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/24/dahua1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《大话数据结构》学习笔记-day01-数据结构">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-23T16:00:00.000Z">2019-06-24</time></div>
+                    <a href="/2019/06/24/dahua1/" class="has-link-black-ter is-size-6">《大话数据结构》学习笔记-day01-数据结构</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/《大话数据结构》/">《大话数据结构》</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/23/scala基本语法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="scala 环境搭建&amp;基本语法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-22T16:00:00.000Z">2019-06-23</time></div>
+                    <a href="/2019/06/23/scala基本语法/" class="has-link-black-ter is-size-6">scala 环境搭建&amp;基本语法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Scala/">Scala</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/22/scala1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="scala 入门">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-21T16:00:00.000Z">2019-06-22</time></div>
+                    <a href="/2019/06/22/scala1/" class="has-link-black-ter is-size-6">scala 入门</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Scala/">Scala</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hadoop/">
+                        <span class="tag">Hadoop</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hbase/">
+                        <span class="tag">Hbase</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SSM框架/">
+                        <span class="tag">SSM框架</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Scala/">
+                        <span class="tag">Scala</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Spring-Boot/">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/我的博客搭建过程/">
+                        <span class="tag">我的博客搭建过程</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/算法/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/闲聊/">
+                        <span class="tag">闲聊</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+	<div id="vcomments"></div>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Spring Boot深入系列--配置文件" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 于宪涛&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-Hans");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+	
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+	
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'K2pfcRNJyLhhJISc7BaeYA88-gzGzoHsz',
+            appKey: 'gHHPTdGOoXqqMFw6YdRml785'
+        })
+    </script>
+</body>
+</html>
