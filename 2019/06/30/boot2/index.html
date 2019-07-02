@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Carson">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-30T08:20:22.523Z">
+<meta property="og:updated_time" content="2019-07-01T08:44:56.556Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot深入系列--配置文件">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
@@ -125,7 +125,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes read (About 2195 words)
+                    15 minutes read (About 2196 words)
                 </span>
                 
                 
@@ -189,35 +189,35 @@
 <h3 id="2-Value获取值和-ConfigurationProperties获取值比较"><a href="#2-Value获取值和-ConfigurationProperties获取值比较" class="headerlink" title="2. @Value获取值和 @ConfigurationProperties获取值比较"></a>2. @Value获取值和 @ConfigurationProperties获取值比较</h3><table>
 <thead>
 <tr>
-<th>@ConfigurationProperties</th>
 <th></th>
+<th>@ConfigurationProperties</th>
 <th>@Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>批量注入配置文件中的属性</td>
 <td>功能</td>
+<td>批量注入配置文件中的属性</td>
 <td>一个个指定</td>
 </tr>
 <tr>
-<td>支持</td>
 <td>松散绑定(松散语法)大小写</td>
+<td>支持</td>
 <td>不支持</td>
 </tr>
 <tr>
-<td>不支持</td>
 <td>SpEL表达式</td>
+<td>不支持</td>
 <td>支持</td>
 </tr>
 <tr>
-<td>支持</td>
 <td>JSR303数据校验</td>
+<td>支持</td>
 <td>不支持</td>
 </tr>
 <tr>
-<td>支持</td>
 <td>复杂类型封装</td>
+<td>支持</td>
 <td>不支持</td>
 </tr>
 </tbody>
@@ -394,7 +394,7 @@
 <h3 id="9-细节"><a href="#9-细节" class="headerlink" title="9.细节"></a>9.细节</h3><h4 id="Conditional派生注解"><a href="#Conditional派生注解" class="headerlink" title="@Conditional派生注解"></a>@Conditional派生注解</h4><p><img src="/2019/06/30/boot2/QQ截图20190630155654.png" alt="carson"></p>
 <p>我发现源码中有很多的 @ConditionalOn*** </p>
 <p>它其实就是利用Spring底层的  @Conditional注解 </p>
-<p>QQ截图20190630155857.png</p>
+<p><img src="/2019/06/30/boot2/QQ截图20190630155857.png" alt></p>
 <p>作用: 必须是 @Conditional 指定的条件成立,才给容器中添加组件,配置类里面的内容才会生效,如果返回false那么,你配的东西都不会生效的</p>
 <p>SpringBoot 扩展了  @Conditional注解  比如:</p>
 <p><img src="/2019/06/30/boot2/QQ截图20190630160056.png" alt="carson"></p>
@@ -460,6 +460,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/02/bootlog/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Spring Boot--日志框架的学习</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/25/dahua2/">
@@ -512,17 +519,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
-                        13
+                        14
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         7
@@ -532,7 +539,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         9
@@ -542,7 +549,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.zhihu.com/people/san-ji-nei-ku/activities" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -588,7 +595,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catalogue
+                Catálogo
             </h3>
             <ul class="menu-list"><li>
         <a class="is-flex" href="#1-yml文件的语法概览">
@@ -689,7 +696,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -714,7 +721,7 @@
                 <span class="level-item">Spring Boot</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Spring-SpringMVC-MyBatis/">
@@ -758,7 +765,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
         <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/SSM框架/" style="font-size: 10px;">SSM框架</a> <a href="/tags/Scala/" style="font-size: 15px;">Scala</a> <a href="/tags/Spring-Boot/" style="font-size: 20px;">Spring Boot</a> <a href="/tags/我的博客搭建过程/" style="font-size: 10px;">我的博客搭建过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/闲聊/" style="font-size: 10px;">闲聊</a>
     </div>
@@ -772,8 +779,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/02/bootlog/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Boot--日志框架的学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-01T16:00:00.000Z">2019-07-02</time></div>
+                    <a href="/2019/07/02/bootlog/" class="has-link-black-ter is-size-6">Spring Boot--日志框架的学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Spring-Boot/">Spring Boot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -851,25 +877,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/06/22/scala1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="scala 入门">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-21T16:00:00.000Z">2019-06-22</time></div>
-                    <a href="/2019/06/22/scala1/" class="has-link-black-ter is-size-6">scala 入门</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Scala/">Scala</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -878,9 +885,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/06/">
@@ -913,7 +931,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -948,7 +966,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Spring-Boot/">
                         <span class="tag">Spring Boot</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1000,8 +1018,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/02/bootlog/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Boot--日志框架的学习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-01T16:00:00.000Z">2019-07-02</time></div>
+                    <a href="/2019/07/02/bootlog/" class="has-link-black-ter is-size-6">Spring Boot--日志框架的学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Spring-Boot/">Spring Boot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1079,25 +1116,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/06/22/scala1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="scala 入门">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-21T16:00:00.000Z">2019-06-22</time></div>
-                    <a href="/2019/06/22/scala1/" class="has-link-black-ter is-size-6">scala 入门</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Scala/">Scala</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1106,9 +1124,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/06/">
@@ -1141,7 +1170,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1176,7 +1205,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Spring-Boot/">
                         <span class="tag">Spring Boot</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1384,10 +1413,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
