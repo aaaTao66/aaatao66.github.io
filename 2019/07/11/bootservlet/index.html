@@ -2,22 +2,21 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Tag: Hbase - Carson</title>
+<title>Spring Boot-嵌入式Servlet容器&amp;三大组件 - Carson</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="这个博客，主要是为了自己记笔记用，使用Hexo框架搭建，GitHub域名支持">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Carson">
-<meta property="og:url" content="http://yoursite.com/tags/Hbase/index.html">
+    <meta name="keywords" content="Spring Boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot-嵌入式Servlet容器&amp;三大组件">
+<meta property="og:url" content="http://yoursite.com/2019/07/11/bootservlet/index.html">
 <meta property="og:site_name" content="Carson">
-<meta property="og:description" content="这个博客，主要是为了自己记笔记用，使用Hexo框架搭建，GitHub域名支持">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-11T07:31:47.687Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Carson">
-<meta name="twitter:description" content="这个博客，主要是为了自己记笔记用，使用Hexo框架搭建，GitHub域名支持">
+<meta name="twitter:title" content="Spring Boot-嵌入式Servlet容器&amp;三大组件">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -98,7 +97,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Carson" height="28">
+                <img src="/images/logo.svg" alt="Spring Boot-嵌入式Servlet容器&amp;三大组件" height="28">
             
             </a>
         </div>
@@ -130,6 +129,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -145,56 +148,149 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Hbase</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-11T16:00:00.000Z">2019-06-12</time>
+                <time class="level-item has-text-grey" datetime="2019-07-10T16:00:00.000Z">2019-07-11</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Hadoop生态圈/">Hadoop生态圈</a>
+                <a class="has-link-grey -link" href="/categories/Spring-Boot/">Spring Boot</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1737 words)
+                    7 minutes read (About 1113 words)
                 </span>
                 
+                
+                阅读次数:
+				<span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+				
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/06/12/HBaseAPI/">HBase-API操作</a>
+                Spring Boot-嵌入式Servlet容器&amp;三大组件
             
         </h1>
         <div class="content">
-            <p><img src="/2019/06/12/HBaseAPI/1.png" alt></p>
+            <p><img src="/2019/07/11/bootservlet/home.jpg" alt="老罗"></p>
+<a id="more"></a>
+<p>这篇博客,只是简述如何去使用, 不会有太深的分析 , 我觉得一个东西要先会用再去学习底层原理,会更加的顺畅一点。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
+<p>Spring Boot默认是使用<strong>Tomcat</strong>作为嵌入式的Servlet容器；</p>
+</blockquote>
+<h3 id="1-如何定制和修改Servlet容器的相关配置？"><a href="#1-如何定制和修改Servlet容器的相关配置？" class="headerlink" title="1.如何定制和修改Servlet容器的相关配置？"></a>1.如何定制和修改Servlet容器的相关配置？</h3><p><strong>1)</strong> 修改propertis/yml配置文件：</p>
+<ul>
+<li>示例</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server.port=8080</span><br><span class="line">server.tomcat.uri-encoding=UTF-8</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><strong>2)</strong> 代码实现方式</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.carson.springboot.config;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Configuration</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyServerConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 配置servlet容器</span></span><br><span class="line">    <span class="hljs-meta">@Bean</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ConfigurableServletWebServerFactory <span class="hljs-title">configurableServletWebServerFactory</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        TomcatServletWebServerFactory factory = <span class="hljs-keyword">new</span> TomcatServletWebServerFactory();</span><br><span class="line">        factory.setPort(<span class="hljs-number">8080</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> factory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-注册-Servlet，Filter，Listener-三大组件"><a href="#2-注册-Servlet，Filter，Listener-三大组件" class="headerlink" title="2. 注册 Servlet，Filter，Listener 三大组件"></a>2. 注册 Servlet，Filter，Listener 三大组件</h3><ul>
+<li><h4 id="Servlet-代码示例："><a href="#Servlet-代码示例：" class="headerlink" title="Servlet 代码示例："></a>Servlet 代码示例：</h4></li>
+</ul>
+<p>创建一个类 MyServlet 继承 HttpServlet</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.carson.springboot.servlet;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 处理get请求</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        doPost(req, resp);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        resp.getWriter().write(<span class="hljs-string">"Hello MyServlet"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再从刚才的 <strong>MyServerConfig</strong> 类 添加一个方法</li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 注册三大组建的 Servlet</span></span><br><span class="line"><span class="hljs-meta">@Bean</span> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> ServletRegistrationBean <span class="hljs-title">myServlet</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    ServletRegistrationBean registrationBean = <span class="hljs-keyword">new</span> ServletRegistrationBean(<span class="hljs-keyword">new</span> MyServlet(),<span class="hljs-string">"/myServlet"</span>);</span><br><span class="line">    <span class="hljs-comment">// MyServlet 就是刚才写的类</span></span><br><span class="line">    <span class="hljs-keyword">return</span> registrationBean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参数说明:    <code>new ServletRegistrationBean(传入哪一个Servlet,拦截哪个路径)</code></p>
+<p><strong>校验是否生效</strong>: 访问 /myServlet 查看效果</p>
+<p><img src="/2019/07/11/bootservlet/1.png" alt="效果"></p>
+<p>可以看到输出的 字符串内容,说明生效了</p>
+<ul>
+<li><h4 id="Filter-代码示例"><a href="#Filter-代码示例" class="headerlink" title="Filter 代码示例"></a>Filter 代码示例</h4></li>
+</ul>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.carson.springboot.filter;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyFilter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span> <span class="hljs-comment">//初始化</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(FilterConfig filterConfig)</span> <span class="hljs-keyword">throws</span> ServletException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span> <span class="hljs-comment">// 过滤</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"MyFilter RUN!!!!"</span>);</span><br><span class="line">        filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span> <span class="hljs-comment">// 销毁</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也是创建一个自己的filter类,实现Filter接口,注意是 <code>import javax.servlet.*;</code>包下的Filter</p>
+<p>初始化和销毁就先不写了,只写运行中时候</p>
+<ul>
+<li><strong>再次来到刚才的 MyServerConfig 类</strong></li>
+</ul>
+<p>加上以下代码</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 2.注册 Filter</span></span><br><span class="line">   <span class="hljs-meta">@Bean</span></span><br><span class="line">   <span class="hljs-function"><span class="hljs-keyword">public</span> FilterRegistrationBean <span class="hljs-title">myFilter</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">       FilterRegistrationBean filterRegistrationBean = <span class="hljs-keyword">new</span> FilterRegistrationBean();</span><br><span class="line">       <span class="hljs-comment">// 设置一个 Filter 也就是我刚才自定义的 类</span></span><br><span class="line">       filterRegistrationBean.setFilter(<span class="hljs-keyword">new</span> MyFilter());</span><br><span class="line">       <span class="hljs-comment">// 设置 拦截路径(可多个)</span></span><br><span class="line">       filterRegistrationBean.setUrlPatterns(Arrays.asList(<span class="hljs-string">"/hello"</span>,<span class="hljs-string">"/myServlet"</span>));</span><br><span class="line">       <span class="hljs-keyword">return</span> filterRegistrationBean;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>setUrlPatterns</strong>默认需要传入一个集合,我转成了数组</p>
+<p><img src="/2019/07/11/bootservlet/2.png" alt></p>
+<p><strong>试验一下</strong>: </p>
+<p> 访问 <code>http://localhost:8080/hello</code>或者<code>http://localhost:8080/myServlet</code>:</p>
+<p>查看idea控制台👇</p>
+<p><img src="/2019/07/11/bootservlet/3.png" alt="控制台"></p>
+<p>打印出了 <code>MyFilter RUN!!!!</code>  说明刚才的 doFilter 执行了!</p>
+<p><img src="/2019/07/11/bootservlet/4.png" alt="控制台"></p>
+<ul>
+<li><h4 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h4></li>
+</ul>
+<p><strong>编写一个MyListener类</strong>:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.carson.springboot.listener;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.Servlet;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.ServletContextEvent;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.ServletContextListener;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ServletContextListener</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">contextInitialized</span><span class="hljs-params">(ServletContextEvent sce)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"contextInitialized..web应用启动"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">contextDestroyed</span><span class="hljs-params">(ServletContextEvent sce)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"contextDestroyed..当前web项目销毁"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注册一下</strong>(这里依然是刚才的 <strong>MyServerConfig</strong> 类):</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 3.注册 listener</span></span><br><span class="line">    <span class="hljs-meta">@Bean</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ServletListenerRegistrationBean <span class="hljs-title">servletListenerRegistrationBean</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        ServletListenerRegistrationBean mylistener = <span class="hljs-keyword">new</span> ServletListenerRegistrationBean(<span class="hljs-keyword">new</span> MyListener());</span><br><span class="line">        <span class="hljs-keyword">return</span> mylistener;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>试验</strong>:</p>
+<p>1) 启动 项目</p>
+<p><img src="/2019/07/11/bootservlet/5.png" alt="控制台"></p>
+<p>我们看到了 启动 </p>
+<p>我们再试一下销毁</p>
+<p><strong>注意!!! :  这里的销毁 不可以 直接按:</strong></p>
+<p><img src="/2019/07/11/bootservlet/666.png" alt></p>
+<p>按这个里就看不到销毁字符串了</p>
+<p><strong>应该按 这里</strong>:</p>
+<p><img src="/2019/07/11/bootservlet/77.png" alt></p>
+<p><img src="/2019/07/11/bootservlet/8.png" alt></p>
+<p>看到销毁表示我的 listener 正常执行了</p>
+<hr>
+<p>Spring Boot 底层帮我们自动配置SpringMVC的时候,也帮我们配置了 前端控制器 <code>DispatcherServlet</code></p>
+<p>基本的配置原理也和三大组件差不太多,这里就不多赘述了</p>
+<hr>
+<h2 id="如何使用其他Servlet容器"><a href="#如何使用其他Servlet容器" class="headerlink" title="如何使用其他Servlet容器?"></a>如何使用其他Servlet容器?</h2><blockquote>
+<p>Spring Boot 除了 Tomcat(默认的) 以外 还支持:</p>
+<ul>
+<li>Jetty (适合长时间连接)</li>
+<li>Undertow (不支持JSP)</li>
+</ul>
+<p>这两个容器</p>
+</blockquote>
+<p>要想使用 其他的容器,就需要先把 tomcat 给除掉! </p>
+<p>在 <strong>pom.xml 文件下</strong> ctrl+alt+shift+u 打开依赖网</p>
+<p>或者鼠标右键 👇</p>
+<p><img src="/2019/07/11/bootservlet/9.png" alt="依赖网"></p>
+<p><img src="/2019/07/11/bootservlet/10.png" alt="依赖网"></p>
+<p>排除方法</p>
+<p><img src="/2019/07/11/bootservlet/11.png" alt="依赖网"></p>
+<p><img src="/2019/07/11/bootservlet/12.png" alt></p>
+<p><strong>然后添加 jetty的依赖</strong>:</p>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!-- 引入其他的servlet容器--&gt;</span></span><br><span class="line">       <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">           <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-jetty<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">       <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>修改刚才的 <strong>MyServerConfig</strong> 类中的代码:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 配置servlet容器</span></span><br><span class="line">    <span class="hljs-meta">@Bean</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> ConfigurableServletWebServerFactory <span class="hljs-title">configurableServletWebServerFactory</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        <span class="hljs-comment">//TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();</span></span><br><span class="line">        JettyServletWebServerFactory jettyServletWebServerFactory = <span class="hljs-keyword">new</span> JettyServletWebServerFactory();</span><br><span class="line">        jettyServletWebServerFactory.setPort(<span class="hljs-number">9192</span>);</span><br><span class="line">       <span class="hljs-comment">// factory.setPort(8080);</span></span><br><span class="line">        <span class="hljs-keyword">return</span> jettyServletWebServerFactory;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>从名称上可以看出来 一个是 tomcat 一个是 jetty </p>
+<p>运行程序:</p>
+<p><img src="/2019/07/11/bootservlet/13.png" alt></p>
+<p>我发现 端口号是我刚才设置的端口,并且 三大组件 还在生效</p>
+<p><strong>就算是切换Undertow  也是一样的流程,这里我就写一下代码看一下</strong>,就不再来一遍了:</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UndertowServletWebServerFactory undertowServletWebServerFactory = <span class="hljs-keyword">new</span> UndertowServletWebServerFactory();</span><br><span class="line">undertowServletWebServerFactory.setPort(<span class="hljs-number">8080</span>);</span><br></pre></td></tr></table></figure>
+<p>切换其他容器就写完了,我这边要再换回 tomcat 以防止出什么问题,毕竟我一开始就是以Tomcat为基础写的程序</p>
+<hr>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/12/HBaseAPI/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Spring-Boot/">Spring Boot</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -202,9 +298,50 @@
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/zhifubao.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/weixin.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/04/ibooker/">
+                <span class="level-item">中文文档-介绍给英文不好的同学</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -301,6 +438,45 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#配置">
+        <span class="has-mr-6">1</span>
+        <span>配置</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-如何定制和修改Servlet容器的相关配置？">
+        <span class="has-mr-6">1.1</span>
+        <span>1.如何定制和修改Servlet容器的相关配置？</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-注册-Servlet，Filter，Listener-三大组件">
+        <span class="has-mr-6">1.2</span>
+        <span>2. 注册 Servlet，Filter，Listener 三大组件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Servlet-代码示例：">
+        <span class="has-mr-6">1.2.1</span>
+        <span>Servlet 代码示例：</span>
+        </a></li><li>
+        <a class="is-flex" href="#Filter-代码示例">
+        <span class="has-mr-6">1.2.2</span>
+        <span>Filter 代码示例</span>
+        </a></li><li>
+        <a class="is-flex" href="#Listener">
+        <span class="has-mr-6">1.2.3</span>
+        <span>Listener</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#如何使用其他Servlet容器">
+        <span class="has-mr-6">2</span>
+        <span>如何使用其他Servlet容器?</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -916,7 +1092,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Carson" height="28">
+                    <img src="/images/logo.svg" alt="Spring Boot-嵌入式Servlet容器&amp;三大组件" height="28">
                 
                 </a>
                 <p class="is-size-7">
