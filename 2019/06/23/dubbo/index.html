@@ -7,18 +7,19 @@
 
 
 
-    <meta name="description" content="Dubbo官方网站： http://dubbo.apache.org/zh-cn/   前言我将会用一个小demo来介绍如何与Spring Boot整合； 如果看我文章的朋友没有用过Spring Boot，Dubbo，那么我推荐你还是先去熟悉一下，因为本篇文章没有介绍如何安装。 这次的demo是获取用户订单信息的小demo 开发环境 win10 idea 2019 zookeeper dub">
+    <meta name="description" content="Dubbo官方网站： http://dubbo.apache.org/zh-cn/">
+<meta name="keywords" content="微服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot 整合 Dubbo">
-<meta property="og:url" content="http://yoursite.com/2019/10/16/dubbo/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/06/23/dubbo/index.html">
 <meta property="og:site_name" content="Carson&#39;s Blog">
-<meta property="og:description" content="Dubbo官方网站： http://dubbo.apache.org/zh-cn/   前言我将会用一个小demo来介绍如何与Spring Boot整合； 如果看我文章的朋友没有用过Spring Boot，Dubbo，那么我推荐你还是先去熟悉一下，因为本篇文章没有介绍如何安装。 这次的demo是获取用户订单信息的小demo 开发环境 win10 idea 2019 zookeeper dub">
+<meta property="og:description" content="Dubbo官方网站： http://dubbo.apache.org/zh-cn/">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-16T08:58:17.811Z">
+<meta property="og:updated_time" content="2019-10-16T09:33:42.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot 整合 Dubbo">
-<meta name="twitter:description" content="Dubbo官方网站： http://dubbo.apache.org/zh-cn/   前言我将会用一个小demo来介绍如何与Spring Boot整合； 如果看我文章的朋友没有用过Spring Boot，Dubbo，那么我推荐你还是先去熟悉一下，因为本篇文章没有介绍如何安装。 这次的demo是获取用户订单信息的小demo 开发环境 win10 idea 2019 zookeeper dub">
+<meta name="twitter:description" content="Dubbo官方网站： http://dubbo.apache.org/zh-cn/">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -131,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -151,13 +156,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-16T08:58:44.121Z">2019-10-16</time>
+                <time class="level-item has-text-grey" datetime="2019-06-22T16:00:00.000Z">2019-06-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Dubbo/">Dubbo</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1629 个字)
+                    11 分钟 读完 (大约 1630 个字)
                 </span>
                 
                 
@@ -178,9 +187,9 @@
         </h1>
         <div class="content">
             <hr>
-<p><img src="/2019/10/16/dubbo/1.jpg" alt></p>
-<hr>
+<p><img src="/2019/06/23/dubbo/1.jpg" alt></p>
 <p>Dubbo官方网站： <a href="http://dubbo.apache.org/zh-cn/" target="_blank" rel="noopener">http://dubbo.apache.org/zh-cn/</a> </p>
+<a id="more"></a>
 <hr>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我将会用一个小demo来介绍如何与Spring Boot整合；</p>
 <p>如果看我文章的朋友没有用过Spring Boot，Dubbo，那么我推荐你还是先去熟悉一下，因为本篇文章没有介绍如何安装。</p>
@@ -206,7 +215,7 @@
 </ul>
 <p>提供者项目名：boot-user-service-provider；（用户，可以什么都不勾选）</p>
 <p>消费者项目名：boot-order-service-consumer；（订单，记得初始化的时候要勾选web）</p>
-<p><img src="/2019/10/16/dubbo/QQ截图20191016165137.png" alt></p>
+<p><img src="/2019/06/23/dubbo/QQ截图20191016165137.png" alt></p>
 <h2 id="编写程序"><a href="#编写程序" class="headerlink" title="编写程序"></a>编写程序</h2><h4 id="项目-gmall-interface"><a href="#项目-gmall-interface" class="headerlink" title="项目:gmall-interface"></a>项目:gmall-interface</h4><ul>
 <li>首先建立一个 JavaBean：</li>
 </ul>
@@ -281,11 +290,20 @@
 <hr>
 <p>启动zookeeper和dubbo和这两个项目，可以在dubbo控制台看到，已经有了消费者和提供者</p>
 <p><img src="http://chuantu.xyz/t6/702/1571215530x2099719707.png" alt="注册中心"></p>
-<p><img src="/2019/10/16/dubbo/2.png" alt></p>
+<p><img src="/2019/06/23/dubbo/2.png" alt></p>
 <p>然后，我们刚才启动的Spring Boot，有一个是web项目，并且设置了端口 8081，让我们试着访问这个 8081端口，并且带上参数：</p>
-<p><img src="/2019/10/16/dubbo/QQ截图20191016165426.png" alt></p>
+<p><img src="/2019/06/23/dubbo/QQ截图20191016165426.png" alt></p>
 <p>成功获取到了订单信息；</p>
 
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/微服务/">微服务</a>
+                </div>
+            </div>
         </div>
         
         
@@ -329,10 +347,17 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/23/scala基本语法/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">scala 环境搭建&amp;基本语法</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/08/springmvclogin/">
-                <span class="level-item">SpringMVC-拦截器-判断用户登录状态</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/22/scala1/">
+                <span class="level-item">scala 入门</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -394,7 +419,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        10
+                        11
                     </p>
                 </div>
             </div>
@@ -404,7 +429,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -435,6 +460,45 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#前言">
+        <span class="has-mr-6">1</span>
+        <span>前言</span>
+        </a></li><li>
+        <a class="is-flex" href="#开发环境">
+        <span class="has-mr-6">2</span>
+        <span>开发环境</span>
+        </a></li><li>
+        <a class="is-flex" href="#创建项目">
+        <span class="has-mr-6">3</span>
+        <span>创建项目</span>
+        </a></li><li>
+        <a class="is-flex" href="#编写程序">
+        <span class="has-mr-6">4</span>
+        <span>编写程序</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#项目-gmall-interface">
+        <span class="has-mr-6">4.1</span>
+        <span>项目:gmall-interface</span>
+        </a></li><li>
+        <a class="is-flex" href="#提供者项目-boot-user-service-provider">
+        <span class="has-mr-6">4.2</span>
+        <span>提供者项目:boot-user-service-provider</span>
+        </a></li><li>
+        <a class="is-flex" href="#消费者项目-boot-order-service-consumer">
+        <span class="has-mr-6">4.3</span>
+        <span>消费者项目:boot-order-service-consumer</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -473,6 +537,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Dubbo/">
+            <span class="level-start">
+                <span class="level-item">Dubbo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Hadoop生态圈/">
             <span class="level-start">
                 <span class="level-item">Hadoop生态圈</span>
@@ -564,7 +636,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Interceptor/" style="font-size: 10px;">Interceptor</a> <a href="/tags/SSM/" style="font-size: 10px;">SSM</a> <a href="/tags/Scala/" style="font-size: 15px;">Scala</a> <a href="/tags/Servlet/" style="font-size: 10px;">Servlet</a> <a href="/tags/Spring-Boot/" style="font-size: 20px;">Spring Boot</a> <a href="/tags/Thymeleaf/" style="font-size: 15px;">Thymeleaf</a> <a href="/tags/WebFlow/" style="font-size: 10px;">WebFlow</a> <a href="/tags/我的博客搭建过程/" style="font-size: 10px;">我的博客搭建过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/闲聊/" style="font-size: 10px;">闲聊</a> <a href="/tags/黑科技/" style="font-size: 10px;">黑科技</a>
+        <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Interceptor/" style="font-size: 10px;">Interceptor</a> <a href="/tags/SSM/" style="font-size: 10px;">SSM</a> <a href="/tags/Scala/" style="font-size: 15px;">Scala</a> <a href="/tags/Servlet/" style="font-size: 10px;">Servlet</a> <a href="/tags/Spring-Boot/" style="font-size: 20px;">Spring Boot</a> <a href="/tags/Thymeleaf/" style="font-size: 15px;">Thymeleaf</a> <a href="/tags/WebFlow/" style="font-size: 10px;">WebFlow</a> <a href="/tags/微服务/" style="font-size: 10px;">微服务</a> <a href="/tags/我的博客搭建过程/" style="font-size: 10px;">我的博客搭建过程</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/闲聊/" style="font-size: 10px;">闲聊</a> <a href="/tags/黑科技/" style="font-size: 10px;">黑科技</a>
     </div>
 </div>
 
@@ -578,25 +650,6 @@
         <h3 class="menu-label">
             最新文章
         </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/10/16/dubbo/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Boot 整合 Dubbo">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-16T08:58:44.121Z">2019-10-16</time></div>
-                    <a href="/2019/10/16/dubbo/" class="has-link-black-ter is-size-6">Spring Boot 整合 Dubbo</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
         
         <article class="media">
             
@@ -674,6 +727,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/07/11/bootservlet/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Boot-嵌入式Servlet容器&amp;三大组件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-10T16:00:00.000Z">2019-07-11</time></div>
+                    <a href="/2019/07/11/bootservlet/" class="has-link-black-ter is-size-6">Spring Boot-嵌入式Servlet容器&amp;三大组件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Spring-Boot/">Spring Boot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -685,17 +757,6 @@
             归档
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/10/">
-                <span class="level-start">
-                    <span class="level-item">十月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/08/">
@@ -725,7 +786,7 @@
                     <span class="level-item">六月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -820,6 +881,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/WebFlow/">
                         <span class="tag">WebFlow</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/微服务/">
+                        <span class="tag">微服务</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -884,25 +952,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/16/dubbo/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Boot 整合 Dubbo">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-16T08:58:44.121Z">2019-10-16</time></div>
-                    <a href="/2019/10/16/dubbo/" class="has-link-black-ter is-size-6">Spring Boot 整合 Dubbo</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/08/08/springmvclogin/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="SpringMVC-拦截器-判断用户登录状态">
@@ -977,6 +1026,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/07/11/bootservlet/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring Boot-嵌入式Servlet容器&amp;三大组件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-10T16:00:00.000Z">2019-07-11</time></div>
+                    <a href="/2019/07/11/bootservlet/" class="has-link-black-ter is-size-6">Spring Boot-嵌入式Servlet容器&amp;三大组件</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Spring-Boot/">Spring Boot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -988,17 +1056,6 @@
             归档
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/10/">
-                <span class="level-start">
-                    <span class="level-item">十月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/08/">
@@ -1028,7 +1085,7 @@
                     <span class="level-item">六月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -1123,6 +1180,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/WebFlow/">
                         <span class="tag">WebFlow</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/微服务/">
+                        <span class="tag">微服务</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
